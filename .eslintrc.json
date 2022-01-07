@@ -1,0 +1,14 @@
+{
+  "extends": "./node_modules/gts/",
+  "rules": {
+    "no-process-exit": "off",
+    "@typescript-eslint/typedef": [
+      "error",
+      {
+        "parameter": true
+      }
+    ],
+    "@typescript-eslint/explicit-function-return-type": 2
+  }
+    
+}
