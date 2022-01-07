@@ -29,8 +29,9 @@ I split the logic into classes that use static methods.
   - modifies the accumulator with the result
 
 ## Setup 
-First it must be compiled.
-
+Install
+`npm install`
+Then compile
 `npm run compile`
 
 ## Use
