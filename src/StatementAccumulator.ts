@@ -12,7 +12,6 @@ export default class SatementAccumulator {
   };
   static receiveInput(input: FormattedInput): RpnStatement | undefined {
     for (const inputItem of input) {
-      console.log(inputItem, typeof inputItem);
       if (typeof inputItem === 'number') {
         this.accumulator.operands.push(inputItem);
       } else {
@@ -34,13 +33,6 @@ export default class SatementAccumulator {
   }
 
   private static accumulatorIsReadyForCalculation(): boolean {
-    console.log(
-      this.accumulator,
-      this.accumulator.operators.length > 0 &&
-        this.accumulator.operands.length > 0 &&
-        this.accumulator.operators.length ===
-          this.accumulator.operands.length - 1
-    );
     return (
       this.accumulator.operators.length > 0 &&
       this.accumulator.operands.length > 0 &&
