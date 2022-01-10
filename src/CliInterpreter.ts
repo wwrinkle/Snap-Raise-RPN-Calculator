@@ -17,8 +17,8 @@ export default class CliInterpreter {
   private static formatInput(input: string): FormattedInput {
     // replace x (multiplcation) with *
     input = input.replace(/x/g, '*');
-    // split on digits (grouped), whitespaces (grouped) and non-digist (not grouped)
-    const splitInput = input.match(/[\d]+|\s+|\D/g)!;
+    // split on digits or periods (grouped), whitespaces (grouped) and non-digist (not grouped)
+    const splitInput = input.match(/[\d|.]+|\s+|\D/g)!;
     // remove spaces
     const filteredInput = splitInput.filter(inputItem => inputItem !== ' ');
     return filteredInput.map((inputItem: string) => {
@@ -26,7 +26,7 @@ export default class CliInterpreter {
       if (Object.keys(operators).includes(inputItem)) {
         return inputItem;
       } else {
-        return parseInt(inputItem);
+        return parseFloat(inputItem);
       }
     }) as FormattedInput;
   }
@@ -36,8 +36,8 @@ export default class CliInterpreter {
       !input.split('').every((char: string) => {
         return (
           Object.keys(operators).includes(char) ||
-          !isNaN(parseInt(char)) ||
-          char === ' '
+          !isNaN(parseFloat(char)) ||
+          [' ', '.'].includes(char)
         );
       })
     ) {
